@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
+    <title>{{$product->title}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -20,20 +20,11 @@
     </header>
     <main>
         <div class="container mx-auto">
-            <h2>Каталог товаров</h2>
+            <h2>{{$product->title}}</h2>
+            <img class="w-50 h-full aspect-1 mr-4git" src="{{ Vite::asset($product->path_img) }}" alt="{{$product->title}}">
             <div>
-                @foreach ($products as $product)
-                <div class="border mb-4 flex">
-                    <img class="w-50 h-full aspect-1 mr-4git" src="{{ Vite::asset($product->path_img) }}" alt="{{$product->title}}">
-                    <div>
-                        <a href="{{route('products.show', ['product'=>$product])}}">
-                            <h3>{{$product->title}}</h3>
-                        </a>
-                        <p>{{$product->description}}</p>
-                        <p>{{$product->price}}</p>
-                    </div>
-                </div>
-                @endforeach
+                <p>{{$product->description}}</p>
+                <p>{{$product->price}}</p>
             </div>
         </div>
     </main>
