@@ -33,8 +33,8 @@
                         <p>{{$product->price}}</p>
                     </div>
                     <div class="ml-auto">
-                        <a href="">Редактировать</a>
-                        <form action="" method="POST">
+                        <a href="{{ route('products.edit', ['product => $product']) }}">Редактировать</a>
+                        <form action="{{route('products.destroy', ['product'=>$product])}}" method="POST">
                             @csrf
                             @method('delete')
                             <input type="submit" value="Удалить">
