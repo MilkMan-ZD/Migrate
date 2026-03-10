@@ -22,7 +22,9 @@
         <div class="container mx-auto">
             <h2>Каталог товаров</h2>
             <div>
-                @foreach ($products as $product)
+                @foreach ($categories as $category)
+                <h3>{{$category->title}}</h3>
+                @foreach ($category->products as $product)
                 <div class="border mb-4 flex">
                     <img class="w-50 h-full aspect-1 mr-4git" src="{{ Vite::asset($product->path_img) }}" alt="{{$product->title}}">
                     <div>
@@ -31,6 +33,7 @@
                         </a>
                         <p>{{$product->description}}</p>
                         <p>{{$product->price}}</p>
+                        <p>{{$product->category->title}}</p>
                     </div>
                     <div class="ml-auto">
                         <a href="{{ route('products.edit', ['product => $product']) }}">Редактировать</a>
@@ -41,6 +44,7 @@
                         </form>
                     </div>
                 </div>
+                @endforeach
                 @endforeach
             </div>
         </div>

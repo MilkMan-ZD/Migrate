@@ -30,6 +30,12 @@
                 <input type="number" name="price" id="price" value="{( $product->price )}" require><br>
                 <label for="description">Описание продукта</label><br>
                 <input name="description" id="description" require>{($product->description)}</textarea><br>
+                <label for="category_id">Категория продукта</label><br>
+                <select name="category_id" id="category_id">
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}" {{$category->id == $product->category_id ? 'selected' : ''}}>{{$category->title}}</option>
+                    @endforeach
+                </select><br>
                 <input type="submit" value="Обновить">
             </form>
         </div>
